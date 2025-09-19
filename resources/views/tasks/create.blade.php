@@ -1,7 +1,14 @@
 @extends('layouts.app')
 @section('content')
-<h2>Create Task</h2>
 @php($isEdit = isset($task))
+
+<h2>
+    @if($isEdit)
+    Edit Task
+    @else
+     Create Task
+    @endif
+    </h2>
 <form method="POST" action="{{ $isEdit ? route('tasks.update', $task) : route('tasks.store') }}">
     @csrf
     @if($isEdit)
